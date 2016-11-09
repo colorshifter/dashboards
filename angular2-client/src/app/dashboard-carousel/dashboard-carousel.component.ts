@@ -62,6 +62,11 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
     if (event.widgetKey === undefined) {
       return;
     }
+    if (event.widgetKey === 'refresh') {
+      window.location.reload();
+      return;
+    }
+    
     const type = COMPONENTS[event.widgetKey];
     if (type != undefined) {
       this.type = type;
