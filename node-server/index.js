@@ -14,6 +14,11 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/client/index.html');
 });
 
+app.get('/refresh', function(req, res){
+  res.sendStatus(200);
+  io.emit('refresh');
+});
+
 http.listen(CONFIG.server.port, function(){
   console.log(`listening on *:${CONFIG.server.port}`);
 });
