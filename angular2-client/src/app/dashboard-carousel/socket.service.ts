@@ -24,6 +24,7 @@ export class SocketService {
     const observable: Observable<any> = Observable.create((observer: Observer<any>) => {
       // The Observable will not complete or fail since we want to reconnect if possible.
       socket.on('message', observer.next.bind(observer));
+      socket.on('refresh', () => window.location.reload() );
     });
     return observable.publish();
   }
