@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.dashboard);
 
         WebView webView = (WebView) findViewById(R.id.webview);
+        webView.clearCache(true);
         webView.loadUrl(Preferences.from(this).getUrl());
         webView.getSettings().setUseWideViewPort(true);
         webView.setInitialScale(1);
@@ -24,6 +26,10 @@ public class DashboardActivity extends AppCompatActivity {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
+        webSettings.setAppCacheEnabled(false);
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+        webView.setWebViewClient(new WebViewClient()); // Fixes js reload on Fire TV Stick
     }
 
 }
