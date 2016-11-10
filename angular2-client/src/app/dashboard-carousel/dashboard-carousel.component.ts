@@ -14,9 +14,7 @@ import { ThanksComponent } from '../dashboards/slack/thanks/thanks.component'
 import { MostActiveChannelComponent } from '../dashboards/slack/most-active-channel/most-active-channel.component'
 
 if (!Object['values']) {
-	Object['values'] = function values(O) {
-		return Object.keys(O).map(function(it) { return O[it]; });
-	};
+  Object['values'] = (obj) => Object.keys(obj).map((key) => obj[key]);
 }
 
 const COMPONENTS = {
