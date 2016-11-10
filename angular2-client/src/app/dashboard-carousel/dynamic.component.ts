@@ -46,7 +46,6 @@ export class DynamicComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   private animateTo(state: string): void {
-    console.log(state);
     this.transitionState = state;
   }
 
