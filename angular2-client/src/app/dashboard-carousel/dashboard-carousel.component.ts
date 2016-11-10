@@ -26,6 +26,13 @@ const COMPONENTS = {
 
 const distinct = (elem, index, arr) => arr.indexOf(elem) === index;
 
+function polyfillObject() {
+  if (!Object['values']) {
+    Object['values'] = (obj) => Object.keys(obj).map((key) => obj[key]);
+  }
+}
+polyfillObject();
+
 @Component({
   selector: 'app-dashboard-carousel',
   templateUrl: 'dashboard-carousel.component.html',
@@ -62,6 +69,11 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
     if (event.widgetKey === undefined) {
       return;
     }
+    if (event.widgetKey === 'refresh') {
+      window.location.reload();
+      return;
+    }
+
     const type = COMPONENTS[event.widgetKey];
     if (type != undefined) {
       this.type = type;

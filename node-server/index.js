@@ -10,15 +10,20 @@ let cache;
 
 app.use("/public", express.static(__dirname + '/client/public'));
 
-app.get('/', function(req, res){
+app.get('/', function(req, res) {
   res.sendFile(__dirname + '/client/index.html');
 });
 
-http.listen(CONFIG.server.port, function(){
+app.get('/refresh', function(req, res) {
+  res.sendStatus(200);
+  io.emit('refresh');
+});
+
+http.listen(CONFIG.server.port, function() {
   console.log(`listening on *:${CONFIG.server.port}`);
 });
 
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', function(socket) {
   if (cache) {
     notifyClient(cache);
   }

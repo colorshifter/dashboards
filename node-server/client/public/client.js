@@ -4,6 +4,10 @@ var main = function() {
   var socket = io();
   var element = document.getElementById('element');
 
+  socket.on('refresh', function() {
+    console.log('asked to refresh');
+  });
+
   socket.on('message', function(msg) {
     if (!widgets[msg.widgetKey]) {
       console.log(msg.widgetKey + ' is unhandled, skipping');
