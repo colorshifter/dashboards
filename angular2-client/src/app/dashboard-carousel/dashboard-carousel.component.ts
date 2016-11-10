@@ -13,10 +13,6 @@ import { GalleryComponent } from '../dashboards/slack/gallery/gallery.component'
 import { ThanksComponent } from '../dashboards/slack/thanks/thanks.component'
 import { MostActiveChannelComponent } from '../dashboards/slack/most-active-channel/most-active-channel.component'
 
-if (!Object['values']) {
-  Object['values'] = (obj) => Object.keys(obj).map((key) => obj[key]);
-}
-
 const COMPONENTS = {
   coverage: SonarCoverageComponent,
   ciWall: ExternalUrlComponent,
@@ -29,6 +25,13 @@ const COMPONENTS = {
 };
 
 const distinct = (elem, index, arr) => arr.indexOf(elem) === index;
+
+function polyfillObject() {
+  if (!Object['values']) {
+    Object['values'] = (obj) => Object.keys(obj).map((key) => obj[key]);
+  }
+}
+polyfillObject();
 
 @Component({
   selector: 'app-dashboard-carousel',
@@ -70,7 +73,7 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
       window.location.reload();
       return;
     }
-    
+
     const type = COMPONENTS[event.widgetKey];
     if (type != undefined) {
       this.type = type;
