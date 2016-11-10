@@ -9,10 +9,10 @@ import { WidgetEvent } from '../WidgetEvent';
 })
 export class XmasCountdownComponent implements DashboardComponent {
 
-  private daysUntilChristmas: number;
+    private daysUntilChristmas: number;
 
-  public update(event: WidgetEvent) {
-    this.daysUntilChristmas = event.payload.daysUntilChristmas;
-  }
+    public update(event: WidgetEvent) {
+        this.daysUntilChristmas = event.payload.daysUntilChristmas;
+    }
 
 }
