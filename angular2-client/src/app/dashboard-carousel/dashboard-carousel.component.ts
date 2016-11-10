@@ -12,6 +12,7 @@ import { ConfigService } from '../config.service';
 import { GalleryComponent } from '../dashboards/slack/gallery/gallery.component'
 import { ThanksComponent } from '../dashboards/slack/thanks/thanks.component'
 import { MostActiveChannelComponent } from '../dashboards/slack/most-active-channel/most-active-channel.component'
+import { XmasCountdownComponent } from '../dashboards/xmas-countdown/xmas-countdown.component'
 
 const COMPONENTS = {
   coverage: SonarCoverageComponent,
@@ -21,7 +22,8 @@ const COMPONENTS = {
   biggestSlacker: BiggestSlackerComponent,
   gallery: GalleryComponent,
   thanks: ThanksComponent,
-  mostActiveChannel: MostActiveChannelComponent
+  mostActiveChannel: MostActiveChannelComponent,
+  xmasCountdown: XmasCountdownComponent
 };
 
 const distinct = (elem, index, arr) => arr.indexOf(elem) === index;
