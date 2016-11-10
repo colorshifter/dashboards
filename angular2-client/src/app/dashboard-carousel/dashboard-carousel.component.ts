@@ -13,6 +13,12 @@ import { GalleryComponent } from '../dashboards/slack/gallery/gallery.component'
 import { ThanksComponent } from '../dashboards/slack/thanks/thanks.component'
 import { MostActiveChannelComponent } from '../dashboards/slack/most-active-channel/most-active-channel.component'
 
+if (!Object['values']) {
+	Object['values'] = function values(O) {
+		return Object.keys(O).map(function(it) { return O[it]; });
+	};
+}
+
 const COMPONENTS = {
   coverage: SonarCoverageComponent,
   ciWall: ExternalUrlComponent,
