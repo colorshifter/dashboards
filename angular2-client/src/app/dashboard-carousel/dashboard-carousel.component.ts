@@ -44,8 +44,8 @@ polyfillObject();
 export class DashboardCarouselComponent implements OnInit, OnDestroy {
 
   private configService: ConfigService;
-  private configSubscription: Subscription;
   private socketService: SocketService;
+  private configSubscription: Subscription;
   private connection: Subscription;
   private type: any;
   private event: WidgetEvent;
