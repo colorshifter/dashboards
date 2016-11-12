@@ -1,7 +1,9 @@
 .copy {
   font-family: Bitter;
   font-size: 6.5vw;
-  color: #000000;
+  color: #FFFFFF;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 .days {
@@ -11,6 +13,11 @@
 .container {
   padding-left: 5%;
   padding-right: 5%;
+}
+
+.background {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 1) 100%), url(./xmas-bg.jpg);
+  background-position: center center;
 }
 
 #snow {
