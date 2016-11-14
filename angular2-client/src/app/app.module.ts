@@ -26,7 +26,6 @@ import { SafePipe } from './dashboards/external-url/safe.pipe';
 import { DynamicComponent } from './dashboard-carousel/dynamic.component';
 import { GalleryComponent } from './dashboards/slack/gallery/gallery.component'
 import { ThanksComponent } from './dashboards/slack/thanks/thanks.component'
-import { MostActiveChannelComponent } from './dashboards/slack/most-active-channel/most-active-channel.component';
 import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdown.component'
 import { ClassicComponent } from './dashboards/classic/classic.component'
 
@@ -54,7 +53,6 @@ import { ClassicComponent } from './dashboards/classic/classic.component'
     BiggestSlackerComponent,
     GalleryComponent,
     ThanksComponent,
-    MostActiveChannelComponent,
     XmasCountdownComponent,
     ClassicComponent
   ],
