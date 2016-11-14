@@ -2,7 +2,8 @@ module.exports = {
   sortByTimestamp: sortMessagesByTimestamp,
   sortByCount: sortByMessagesLength,
   flattenToUser: flattenToUser,
-  flattenToChannel: flattenToChannel
+  flattenToChannel: flattenToChannel,
+  highestResolutionForUser: highestResolutionForUser
 }
 
 function sortMessagesByTimestamp(a, b) {
@@ -36,4 +37,14 @@ function flattenMessages(messages, flattenKey) {
         messages: dict[key]
       }
     });
+}
+
+function highestResolutionForUser(user) {
+  var profile = user.profile;
+  var sizes = ['512', '192', '72', '48', '32', '24'];
+  var i = 0;
+  while (i < sizes.length && profile['image_' + sizes[i]] == null) {
+    i++;
+  }
+  return i >= sizes.length ? null : profile['image_' + sizes[i]];
 }

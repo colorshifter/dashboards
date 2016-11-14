@@ -1,4 +1,3 @@
-import { BiggestSlackerComponent } from "./dashboards/slack/biggest-slacker/biggest-slacker.component";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -28,6 +27,7 @@ import { GalleryComponent } from './dashboards/slack/gallery/gallery.component'
 import { ThanksComponent } from './dashboards/slack/thanks/thanks.component'
 import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdown.component'
 import { ClassicComponent } from './dashboards/classic/classic.component'
+import { SlackMessageComponent } from './dashboards/slack/slack-message.component'
 
 @NgModule({
   imports: [
@@ -50,11 +50,11 @@ import { ClassicComponent } from './dashboards/classic/classic.component'
     ExternalUrlComponent,
     SafePipe,
     DynamicComponent,
-    BiggestSlackerComponent,
     GalleryComponent,
     ThanksComponent,
     XmasCountdownComponent,
-    ClassicComponent
+    ClassicComponent,
+    SlackMessageComponent
   ],
   providers: [
     SystemClock,

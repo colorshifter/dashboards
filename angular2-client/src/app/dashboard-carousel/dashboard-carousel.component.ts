@@ -1,4 +1,3 @@
-import { BiggestSlackerComponent } from "../dashboards/slack/biggest-slacker/biggest-slacker.component";
 import { ExternalUrlComponent } from '../dashboards/external-url/external-url.component';
 import { WidgetEvent } from '../dashboards/WidgetEvent';
 import { DynamicComponent } from './dynamic.component';
@@ -10,14 +9,15 @@ import { GalleryComponent } from '../dashboards/slack/gallery/gallery.component'
 import { ThanksComponent } from '../dashboards/slack/thanks/thanks.component'
 import { XmasCountdownComponent } from '../dashboards/xmas-countdown/xmas-countdown.component'
 import { ClassicComponent } from '../dashboards/classic/classic.component'
+import { SlackMessageComponent } from '../dashboards/slack/slack-message.component'
 
 const COMPONENTS = {
   ciWall: ExternalUrlComponent,
-  biggestSlacker: BiggestSlackerComponent,
   gallery: GalleryComponent,
   thanks: ThanksComponent,
   xmasCountdown: XmasCountdownComponent,
-  classic: ClassicComponent
+  classic: ClassicComponent,
+  slackMessage: SlackMessageComponent
 };
 
 const distinct = (elem, index, arr) => arr.indexOf(elem) === index;
@@ -71,6 +71,11 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
     }
     if (event.template === 'classic') {
       this.type = ClassicComponent;
+      this.event = event;
+      return;
+    }
+    if (event.template === 'message') {
+      this.type = SlackMessageComponent;
       this.event = event;
       return;
     }
