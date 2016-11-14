@@ -32,9 +32,15 @@ function parseResponse(body) {
 }
 
 function toRuleResult(data) {
+  var questions = data.questions;
+  var question = questions[Math.floor(Math.random() * questions.length)];
   return Promise.resolve({
     widgetKey: 'stackoverflow',
-    payload: data
+    template: 'classic',
+    payload: {
+      title: `&#128561;<br/>${questions.length} questions unanswered`,
+      text: `surl.novoda.com/stackoverflow<br/><br/>&quot;${question.title}&quot;`
+    }
   });
 }
 
