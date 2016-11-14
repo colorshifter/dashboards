@@ -20,7 +20,6 @@ import { ConfigService } from './config.service';
 import { TimezoneDetectorService } from './dashboards/github-contributors/timezone-detector.service';
 import { DashboardCarouselComponent } from './dashboard-carousel/dashboard-carousel.component';
 import { CarouselHeaderComponent } from './dashboard-carousel/carousel-header.component';
-import { SonarCoverageComponent } from './dashboards/sonar-coverage/sonar-coverage.component';
 import { SocketService } from './dashboard-carousel/socket.service';
 import { ExternalUrlComponent } from './dashboards/external-url/external-url.component';
 import { SafePipe } from './dashboards/external-url/safe.pipe';
@@ -31,6 +30,7 @@ import { GalleryComponent } from './dashboards/slack/gallery/gallery.component'
 import { ThanksComponent } from './dashboards/slack/thanks/thanks.component'
 import { MostActiveChannelComponent } from './dashboards/slack/most-active-channel/most-active-channel.component';
 import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdown.component'
+import { ClassicComponent } from './dashboards/classic/classic.component'
 
 @NgModule({
   imports: [
@@ -50,7 +50,6 @@ import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdo
     ProjectContributorComponent,
     DashboardCarouselComponent,
     CarouselHeaderComponent,
-    SonarCoverageComponent,
     ExternalUrlComponent,
     SafePipe,
     ReviewComponent,
@@ -60,7 +59,8 @@ import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdo
     GalleryComponent,
     ThanksComponent,
     MostActiveChannelComponent,
-    XmasCountdownComponent
+    XmasCountdownComponent,
+    ClassicComponent
   ],
   providers: [
     SystemClock,

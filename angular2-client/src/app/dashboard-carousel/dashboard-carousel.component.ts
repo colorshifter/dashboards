@@ -1,7 +1,6 @@
 import { BiggestSlackerComponent } from "../dashboards/slack/biggest-slacker/biggest-slacker.component";
 import { ExternalUrlComponent } from '../dashboards/external-url/external-url.component';
 import { ReviewComponent } from '../dashboards/review';
-import { SonarCoverageComponent } from '../dashboards/sonar-coverage';
 import { StackOverflowComponent } from '../dashboards/stackoverflow/stackoverflow.component';
 import { WidgetEvent } from '../dashboards/WidgetEvent';
 import { DynamicComponent } from './dynamic.component';
@@ -13,9 +12,9 @@ import { GalleryComponent } from '../dashboards/slack/gallery/gallery.component'
 import { ThanksComponent } from '../dashboards/slack/thanks/thanks.component'
 import { MostActiveChannelComponent } from '../dashboards/slack/most-active-channel/most-active-channel.component'
 import { XmasCountdownComponent } from '../dashboards/xmas-countdown/xmas-countdown.component'
+import { ClassicComponent } from '../dashboards/classic/classic.component'
 
 const COMPONENTS = {
-  coverage: SonarCoverageComponent,
   ciWall: ExternalUrlComponent,
   reviews: ReviewComponent,
   stackoverflow: StackOverflowComponent,
@@ -23,7 +22,8 @@ const COMPONENTS = {
   gallery: GalleryComponent,
   thanks: ThanksComponent,
   mostActiveChannel: MostActiveChannelComponent,
-  xmasCountdown: XmasCountdownComponent
+  xmasCountdown: XmasCountdownComponent,
+  classic: ClassicComponent
 };
 
 const distinct = (elem, index, arr) => arr.indexOf(elem) === index;
@@ -75,7 +75,11 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
       window.location.reload();
       return;
     }
-
+    if (event.template === 'classic') {
+      this.type = ClassicComponent;
+      this.event = event;
+      return;
+    }
     const type = COMPONENTS[event.widgetKey];
     if (type != undefined) {
       this.type = type;
