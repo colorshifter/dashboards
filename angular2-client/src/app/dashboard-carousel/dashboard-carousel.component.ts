@@ -6,7 +6,6 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ConnectableObservable, Subscription, Subscriber } from 'rxjs';
 import { ConfigService } from '../config.service';
 import { GalleryComponent } from '../dashboards/slack/gallery/gallery.component'
-import { ThanksComponent } from '../dashboards/slack/thanks/thanks.component'
 import { XmasCountdownComponent } from '../dashboards/xmas-countdown/xmas-countdown.component'
 import { ClassicComponent } from '../dashboards/classic/classic.component'
 import { SlackMessageComponent } from '../dashboards/slack/slack-message.component'
@@ -14,7 +13,6 @@ import { SlackMessageComponent } from '../dashboards/slack/slack-message.compone
 const COMPONENTS = {
   ciWall: ExternalUrlComponent,
   gallery: GalleryComponent,
-  thanks: ThanksComponent,
   xmasCountdown: XmasCountdownComponent,
   classic: ClassicComponent,
   slackMessage: SlackMessageComponent

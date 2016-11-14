@@ -24,7 +24,6 @@ import { ExternalUrlComponent } from './dashboards/external-url/external-url.com
 import { SafePipe } from './dashboards/external-url/safe.pipe';
 import { DynamicComponent } from './dashboard-carousel/dynamic.component';
 import { GalleryComponent } from './dashboards/slack/gallery/gallery.component'
-import { ThanksComponent } from './dashboards/slack/thanks/thanks.component'
 import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdown.component'
 import { ClassicComponent } from './dashboards/classic/classic.component'
 import { SlackMessageComponent } from './dashboards/slack/slack-message.component'
@@ -51,7 +50,6 @@ import { SlackMessageComponent } from './dashboards/slack/slack-message.componen
     SafePipe,
     DynamicComponent,
     GalleryComponent,
-    ThanksComponent,
     XmasCountdownComponent,
     ClassicComponent,
     SlackMessageComponent
