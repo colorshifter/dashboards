@@ -48,16 +48,14 @@ function toRuleResult(app) {
     });
 
     var average = total / data.length;
-    var demotivators = data.filter(each => each.score < 2);
     var motivators = data.filter(each => each.score > 2);
-
+    var review = motivators[Math.floor(Math.random() * motivators.length)];
     return Promise.resolve({
       widgetKey: 'reviews',
+      template: 'classic',
       payload: {
-        average: average,
-        demotivators: demotivators,
-        motivators: motivators,
-        appName: app.name
+	title: `${app.name}<br/>${'&#11088;'.repeat(review.score)}`,
+	text: review.text
       }
     });
   }

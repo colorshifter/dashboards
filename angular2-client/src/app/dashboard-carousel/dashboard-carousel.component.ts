@@ -1,6 +1,5 @@
 import { BiggestSlackerComponent } from "../dashboards/slack/biggest-slacker/biggest-slacker.component";
 import { ExternalUrlComponent } from '../dashboards/external-url/external-url.component';
-import { ReviewComponent } from '../dashboards/review';
 import { StackOverflowComponent } from '../dashboards/stackoverflow/stackoverflow.component';
 import { WidgetEvent } from '../dashboards/WidgetEvent';
 import { DynamicComponent } from './dynamic.component';
@@ -16,7 +15,6 @@ import { ClassicComponent } from '../dashboards/classic/classic.component'
 
 const COMPONENTS = {
   ciWall: ExternalUrlComponent,
-  reviews: ReviewComponent,
   stackoverflow: StackOverflowComponent,
   biggestSlacker: BiggestSlackerComponent,
   gallery: GalleryComponent,

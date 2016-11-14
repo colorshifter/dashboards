@@ -23,7 +23,6 @@ import { CarouselHeaderComponent } from './dashboard-carousel/carousel-header.co
 import { SocketService } from './dashboard-carousel/socket.service';
 import { ExternalUrlComponent } from './dashboards/external-url/external-url.component';
 import { SafePipe } from './dashboards/external-url/safe.pipe';
-import { ReviewComponent } from './dashboards/review/review.component';
 import { StackOverflowComponent } from './dashboards/stackoverflow/stackoverflow.component';
 import { DynamicComponent } from './dashboard-carousel/dynamic.component';
 import { GalleryComponent } from './dashboards/slack/gallery/gallery.component'
@@ -52,7 +51,6 @@ import { ClassicComponent } from './dashboards/classic/classic.component'
     CarouselHeaderComponent,
     ExternalUrlComponent,
     SafePipe,
-    ReviewComponent,
     StackOverflowComponent,
     DynamicComponent,
     BiggestSlackerComponent,
