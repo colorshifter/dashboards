@@ -82,10 +82,14 @@ function toRuleResult(data) {
   });
 
   incrementIndex(filtered.length);
-
+  const coverage = filtered[currentIndex];
   return Promise.resolve({
     widgetKey: 'coverage',
-    payload: filtered[currentIndex]
+    template: 'classic',
+    payload: {
+      title: '&#128172;',
+      text: `<b>${coverage.project}</b> has ${coverage.coverage}% coverage`  
+    }
   });
 }
 
