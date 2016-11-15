@@ -4,7 +4,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { ReportsService } from './reports.service';
 import { Http, BaseRequestOptions, ResponseOptions, Response } from '@angular/http';
 import { MockBackend } from '@angular/http/testing/mock_backend';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '../../../config.service';
 import { Observable } from 'rxjs';
 
 describe('Service: Reports', () => {
