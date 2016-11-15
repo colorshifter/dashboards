@@ -1,9 +1,16 @@
-const SO_URL = 'http://stackoverflow.com/search?q=novoda+hasaccepted%3Ano+closed%3Ano+duplicate%3Ano'
+const SO_URL = 'http://stackoverflow.com/search?q=novoda+hasaccepted%3Ano+closed%3Ano+duplicate%3Ano+created%3A3m...'
 const httpClient = require('request-promise-native');
+const BASE_URL = 'http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q=novoda&accepted=False&site=stackoverflow&closed=False&duplicate=False';
 const REQUEST = {
-	url: 'http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q=novoda&accepted=False&site=stackoverflow&closed=False&duplicate=False',
+  url: buildUrl(),
   gzip: true
 };
+
+function buildUrl() {
+  var date = new Date();
+  date.setMonth(date.getMonth() - 3);
+  return BASE_URL + `&min=${date.getTime() / 1000 | 0}`;
+}
 
 function StackOverflow() {}
 
