@@ -98,7 +98,7 @@ describe('Component: ContributorsDashboard', () => {
     xit('gets the company stats', () => {
       component.ngOnInit();
 
-      Scheduler.async.flush();
+      Scheduler.async.flush(null);
 
       expect(timezoneDetectorService.getTimezone).toHaveBeenCalled();
       expect(reportsService.getAggregatedStats).toHaveBeenCalled();
