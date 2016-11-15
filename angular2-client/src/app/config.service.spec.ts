@@ -5,10 +5,13 @@ import { ConfigService } from './config.service';
 import { MockBackend } from '@angular/http/testing/mock_backend';
 import { BaseRequestOptions, Http, ResponseOptions, Response } from '@angular/http';
 import { async } from '@angular/core/testing/async';
+import { ServerUrlService } from './server-url.service';
+import { Config } from './Config';
 
 describe('Service: Config', () => {
 
   let mockBackend: MockBackend;
+  let serverUrlService: ServerUrlService;
   let configService: ConfigService;
 
   beforeEach(() => {
@@ -21,14 +24,28 @@ describe('Service: Config', () => {
           useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
           deps: [MockBackend, BaseRequestOptions]
         },
+        ServerUrlService,
         ConfigService
       ]
     });
   });
 
-  beforeEach(inject([MockBackend], (_mockBackend_) => {
+  beforeEach(inject([MockBackend, ServerUrlService], (_mockBackend_, _serverUrlService_) => {
     mockBackend = _mockBackend_;
+    serverUrlService = _serverUrlService_;
   }));
+
+  const givenLocalServer = () => {
+    spyOn(serverUrlService, 'mapUrl').and.returnValue((config: Config) => {
+      return 'http://localhost:' + config.port;
+    });
+  };
+
+  const givenRemoteServer = () => {
+    spyOn(serverUrlService, 'mapUrl').and.returnValue((config: Config) => {
+      return config.serverUrl + ':' + config.port;
+    });
+  };
 
   describe('with success backend', () => {
 
@@ -36,7 +53,8 @@ describe('Service: Config', () => {
       let response = new Response(new ResponseOptions({
         body: `{
         "api": "https://your-webservice.com/api/",
-        "serverUrl": "https://your-webservice.com:[port]"        
+        "serverUrl": "https://your-webservice.com",
+        "port": 42
       }`
       }));
       mockBackend.connections.subscribe(connection => connection.mockRespond(response));
@@ -58,11 +76,23 @@ describe('Service: Config', () => {
         });
     }));
 
-    it('executes the input handler with the right server url', async(() => {
+    it('executes the input handler with the right server local url', async(() => {
+      givenLocalServer();
+
       configService
         .getServerUrl()
         .subscribe((serverUrl: string) => {
-          expect(serverUrl).toBe('https://your-webservice.com:[port]');
+          expect(serverUrl).toBe('http://localhost:42');
+        });
+    }));
+
+    it('executes the input handler with the right server remote url', async(() => {
+      givenRemoteServer();
+
+      configService
+        .getServerUrl()
+        .subscribe((serverUrl: string) => {
+          expect(serverUrl).toBe('https://your-webservice.com:42');
         });
     }));
 

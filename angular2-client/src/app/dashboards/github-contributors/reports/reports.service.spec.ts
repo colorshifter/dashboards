@@ -6,6 +6,7 @@ import { Http, BaseRequestOptions, ResponseOptions, Response } from '@angular/ht
 import { MockBackend } from '@angular/http/testing/mock_backend';
 import { ConfigService } from '../../../config.service';
 import { Observable } from 'rxjs';
+import { ServerUrlService } from '../../../server-url.service';
 
 describe('Service: Reports', () => {
 
@@ -27,6 +28,7 @@ describe('Service: Reports', () => {
           deps: [MockBackend, BaseRequestOptions]
         },
         ConfigService,
+        ServerUrlService,
         ReportsService
       ]
     });
