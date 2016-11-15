@@ -11,27 +11,18 @@ import { ClassicComponent } from '../dashboards/classic/classic.component'
 import { SlackMessageComponent } from '../dashboards/slack/slack-message.component'
 
 const COMPONENTS = {
-  ciWall: ExternalUrlComponent,
-  gallery: GalleryComponent,
-  xmasCountdown: XmasCountdownComponent,
+  externalUrl: ExternalUrlComponent,
+  image: GalleryComponent,
+  christmas: XmasCountdownComponent,
   classic: ClassicComponent,
   slackMessage: SlackMessageComponent
 };
-
-const distinct = (elem, index, arr) => arr.indexOf(elem) === index;
-
-function polyfillObject() {
-  if (!Object['values']) {
-    Object['values'] = (obj) => Object.keys(obj).map((key) => obj[key]);
-  }
-}
-polyfillObject();
 
 @Component({
   selector: 'app-dashboard-carousel',
   templateUrl: 'dashboard-carousel.component.html',
   styleUrls: ['dashboard-carousel.component.scss'],
-  entryComponents: Object['values'](COMPONENTS).filter(distinct)
+  entryComponents: Object['values'](COMPONENTS)
 })
 export class DashboardCarouselComponent implements OnInit, OnDestroy {
 
@@ -61,26 +52,20 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
 
   private onWidgetEvent = (event: WidgetEvent) => {
     if (event.widgetKey === undefined) {
+      console.log("This widget doesn't provide a 'widgetKey'");
       return;
     }
     if (event.widgetKey === 'refresh') {
       window.location.reload();
       return;
     }
-    if (event.template === 'classic') {
-      this.type = ClassicComponent;
-      this.event = event;
-      return;
-    }
-    if (event.template === 'message') {
-      this.type = SlackMessageComponent;
-      this.event = event;
-      return;
-    }
-    const type = COMPONENTS[event.widgetKey];
+    const type = COMPONENTS[event.template];
     if (type != undefined) {
       this.type = type;
       this.event = event;
+    } else {
+      console.log(`The widget ${event.widgetKey} doesn't provide a 'template'`); 
+      return;
     }
   };
 
