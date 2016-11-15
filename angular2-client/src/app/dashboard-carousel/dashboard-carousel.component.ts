@@ -15,7 +15,7 @@ const COMPONENTS = {
   image: GalleryComponent,
   christmas: XmasCountdownComponent,
   classic: ClassicComponent,
-  slackMessage: SlackMessageComponent
+  message: SlackMessageComponent
 };
 
 @Component({
