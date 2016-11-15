@@ -40,7 +40,7 @@ export class ConfigService {
     return this.getConfig()
       .map((config: Config) => {
         let host: string = this.isLocal() ? 'http://localhost' : config.serverUrl;
-         return host + ":" + config.port;
+         return host + ':' + config.port;
       })
       .first();
   }
