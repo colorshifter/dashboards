@@ -22,6 +22,7 @@ function findImageMessages(dataStore, messages) {
 function createPayload(dataStore, imageMessage) {
   return {
     widgetKey: 'gallery',
+    template: 'image',
     payload: {
       user: dataStore.getUserById(imageMessage.user),
       gallery: {
