@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { ContributorsDashboardComponent } from './contributors-dashboard.component';
 import { SystemClock } from '../system-clock';
 import { WeekCalculator } from '../week-calculator.service';
@@ -23,16 +23,18 @@ describe('Component: ContributorsDashboard', () => {
   let component: ContributorsDashboardComponent;
 
   beforeEach(() => {
-    addProviders([
-      SystemClock,
-      WeekCalculator,
-      {
-        provide: ReportsService,
-        useClass: ReportsMockService
-      },
-      ReportsClient,
-      TimezoneDetectorService
-    ]);
+    TestBed.configureTestingModule({
+      providers: [
+        SystemClock,
+        WeekCalculator,
+        {
+          provide: ReportsService,
+          useClass: ReportsMockService
+        },
+        ReportsClient,
+        TimezoneDetectorService
+      ]
+    });
   });
 
   beforeEach(inject([SystemClock, WeekCalculator, ReportsService, ReportsClient, TimezoneDetectorService],

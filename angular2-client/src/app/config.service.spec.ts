@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { ConfigService } from './config.service';
 import { MockBackend } from '@angular/http/testing/mock_backend';
 import { BaseRequestOptions, Http, ResponseOptions, Response } from '@angular/http';
@@ -12,16 +12,18 @@ describe('Service: Config', () => {
   let configService: ConfigService;
 
   beforeEach(() => {
-    addProviders([
-      MockBackend,
-      BaseRequestOptions,
-      {
-        provide: Http,
-        useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
-        deps: [MockBackend, BaseRequestOptions]
-      },
-      ConfigService
-    ]);
+    TestBed.configureTestingModule({
+      providers: [
+        MockBackend,
+        BaseRequestOptions,
+        {
+          provide: Http,
+          useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
+          deps: [MockBackend, BaseRequestOptions]
+        },
+        ConfigService
+      ]
+    });
   });
 
   beforeEach(inject([MockBackend], (_mockBackend_) => {

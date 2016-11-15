@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { ReportsMockService } from './reports-mock.service';
 import { ReportsService } from './reports.service';
 import { async } from '@angular/core/testing/async';
@@ -10,12 +10,14 @@ describe('Service: ReportsMockService', () => {
   let service: ReportsMockService;
 
   beforeEach(() => {
-    addProviders([
-      {
-        provide: ReportsService,
-        useClass: ReportsMockService
-      }
-    ]);
+    TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: ReportsService,
+          useClass: ReportsMockService
+        }
+      ]
+    });
   });
 
   beforeEach(inject([ReportsService], (_service_: ReportsMockService) => {
