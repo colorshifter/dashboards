@@ -1,12 +1,14 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('App: WebDashboard', () => {
 
   beforeEach(() => {
-    addProviders([AppComponent]);
+    TestBed.configureTestingModule({
+      providers: [AppComponent]
+    });
   });
 
   it('should create the app',

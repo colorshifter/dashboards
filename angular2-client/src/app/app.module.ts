@@ -17,6 +17,7 @@ import { TeamContributorsComponent } from './dashboards/github-contributors/team
 import { ProjectContributorComponent } from './dashboards/github-contributors/project-contributor/project-contributor.component';
 import { ProjectContributorsComponent } from './dashboards/github-contributors/project-contributors/project-contributors.component';
 import { ConfigService } from './config.service';
+import { ServerUrlService } from './server-url.service';
 import { TimezoneDetectorService } from './dashboards/github-contributors/timezone-detector.service';
 import { DashboardCarouselComponent } from './dashboard-carousel/dashboard-carousel.component';
 import { CarouselHeaderComponent } from './dashboard-carousel/carousel-header.component';
@@ -69,7 +70,8 @@ import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdo
     reportsServiceProvider,
     ReportsClient,
     TimezoneDetectorService,
-    SocketService
+    SocketService,
+    ServerUrlService
   ],
   entryComponents: [AppComponent],
   bootstrap: [AppComponent]

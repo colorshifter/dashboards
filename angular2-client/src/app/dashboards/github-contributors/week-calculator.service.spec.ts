@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { WeekCalculator } from './week-calculator.service';
 import { SystemClock } from './system-clock';
 
@@ -10,7 +10,9 @@ describe('Service: WeekCalculator', () => {
   let weekCalculator: WeekCalculator;
 
   beforeEach(() => {
-    addProviders([SystemClock, WeekCalculator]);
+    TestBed.configureTestingModule({
+      providers: [SystemClock, WeekCalculator]
+    });
   });
 
   beforeEach(inject([SystemClock, WeekCalculator], (_clock_: SystemClock, _weekCalculator_: WeekCalculator) => {

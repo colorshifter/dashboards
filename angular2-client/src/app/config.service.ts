@@ -3,13 +3,14 @@ import { Http, Response } from '@angular/http';
 import { ReplaySubject, Observable } from 'rxjs';
 import { Config } from './Config';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { ServerUrlService } from './server-url.service';
 
 @Injectable()
 export class ConfigService {
 
   private subject: ReplaySubject<Config>;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private urlMapper: ServerUrlService) {
     this.subject = new ReplaySubject<Config>(1);
     this.http
       .get('config.json')
@@ -38,15 +39,8 @@ export class ConfigService {
 
   getServerUrl(): Observable<string> {
     return this.getConfig()
-      .map((config: Config) => {
-        let host: string = this.isLocal() ? 'http://localhost' : config.serverUrl;
-         return host + ":" + config.port;
-      })
+      .map(this.urlMapper.mapUrl())
       .first();
-  }
-
-  private isLocal() {
-    return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   }
 
 }
