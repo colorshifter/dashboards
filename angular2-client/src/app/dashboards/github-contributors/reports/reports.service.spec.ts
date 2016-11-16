@@ -1,11 +1,12 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { ReportsService } from './reports.service';
 import { Http, BaseRequestOptions, ResponseOptions, Response } from '@angular/http';
 import { MockBackend } from '@angular/http/testing/mock_backend';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '../../../config.service';
 import { Observable } from 'rxjs';
+import { ServerUrlService } from '../../../server-url.service';
 
 describe('Service: Reports', () => {
 
@@ -17,17 +18,20 @@ describe('Service: Reports', () => {
   let reportsService: ReportsService;
 
   beforeEach(() => {
-    addProviders([
-      MockBackend,
-      BaseRequestOptions,
-      {
-        provide: Http,
-        useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
-        deps: [MockBackend, BaseRequestOptions]
-      },
-      ConfigService,
-      ReportsService
-    ]);
+    TestBed.configureTestingModule({
+      providers: [
+        MockBackend,
+        BaseRequestOptions,
+        {
+          provide: Http,
+          useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
+          deps: [MockBackend, BaseRequestOptions]
+        },
+        ConfigService,
+        ServerUrlService,
+        ReportsService
+      ]
+    });
   });
 
   beforeEach(inject([MockBackend, ConfigService, ReportsService],

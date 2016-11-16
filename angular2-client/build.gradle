@@ -13,3 +13,12 @@ test.dependsOn 'npm_test'
 
 task build
 build.dependsOn 'test'
+
+task('npmBuild', type: NpmTask) {
+    group = 'Node'
+    description = "Run \'npm run build\'."
+    args = ['run', 'build']
+}
+
+npmBuild.dependsOn 'npmInstall'
+build.dependsOn 'npmBuild'

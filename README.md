@@ -1,4 +1,8 @@
-# Dashboards!
+# dashboards [](https://ci.novoda.com/buildStatus/icon?job=dashboards) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
+
+Dashboards server and client using node, angular2 and a dummy Android app.
+
+## Description
 
 This repo contains 3 projects that form the dashboard set up at Novoda:
 
@@ -6,7 +10,7 @@ This repo contains 3 projects that form the dashboard set up at Novoda:
  - `angular2-client`: The main front-end done with Angular2. It connects to the server via websockets and it only knows how to show the data it receives for each dashboard, it doesn't know where the data comes from. 
  - `node-server`: The dashboard noidejs back-end. This is the brain of the project and it gets all the data that will be displayed in the dashboards and pushes the data to the clients via websockets.
 
-## Developing
+## Simple usage
 
 To get the server running do:
 
@@ -24,9 +28,18 @@ To get the front-end running do:
  - `ng serve`
  - Open a browser `http://localhost:4200/dashboards`
 
-To get the android app complied do:
+To get the android app running do:
 
  - `cd android-webview-app`
  - `./gradlew installDebug`
  - Run the app and change the URL to point to your angular2 front end
+ 
+## Links
+
+Here are a list of useful links:
+
+ * We always welcome people to contribute new features or bug fixes, [here is how](https://github.com/novoda/novoda/blob/master/CONTRIBUTING.md)
+ * If you have a problem check the [Issues Page](https://github.com/novoda/dashboards/issues) first to see if we are working on it
+ * For further usage or to delve more deeply checkout the [Project Wiki](https://github.com/novoda/dashboards/wiki)
+ * Looking for community help, browse the already asked [Stack Overflow Questions](http://stackoverflow.com/questions/tagged/support-dashboards) or use the tag: `support-dashboards` when posting a new question
  

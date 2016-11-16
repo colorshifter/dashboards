@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { ReportsService } from './reports.service';
-import { inject } from '@angular/core/testing/test_bed';
+import { inject } from '@angular/core/testing';
 import { ReportsMockService } from './reports-mock.service';
 import { ReportsClient } from './reports-client.service';
 import { Observable } from 'rxjs';
@@ -18,13 +18,15 @@ describe('Service: ReportsClient', () => {
   const ANY_TIMEZONE = 'Europe/London';
 
   beforeEach(() => {
-    addProviders([
-      {
-        provide: ReportsService,
-        useClass: ReportsMockService
-      },
-      ReportsClient
-    ]);
+    TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: ReportsService,
+          useClass: ReportsMockService
+        },
+        ReportsClient
+      ]
+    });
   });
 
   beforeEach(inject([ReportsService, ReportsClient], (_service_: ReportsService, _client_: ReportsClient) => {
