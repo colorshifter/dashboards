@@ -1,4 +1,4 @@
-# dashboards [](https://ci.novoda.com/buildStatus/icon?job=dashboards) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
+# dashboards ![](https://ci.novoda.com/buildStatus/icon?job=dashboards) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
 
 Dashboards server and client using node, angular2 and a dummy Android app.
 
