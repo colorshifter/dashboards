@@ -8,6 +8,9 @@
     },
     "slack": {
       "token": ""
+    },
+    "pukka": {
+      "cookie": ""
     }
   }
 }
