@@ -1,5 +1,5 @@
-<div class="content-container active-image" *ngIf="data != undefined">
-  <div class="active-container">
-    <img [src]="data.image"/>
+<div class="image-container" *ngIf="data != undefined">
+  <div *ngFor="let item of data;">
+    <img class="avatar-image" [src]="item.image"/>
   </div>
 </div>
