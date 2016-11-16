@@ -1,3 +1,5 @@
-<p>
-  people-wall works!
-</p>
+<div class="content-container active-image" *ngIf="data != undefined">
+  <div class="active-container">
+    <img [src]="data.image"/>
+  </div>
+</div>
