@@ -46,6 +46,7 @@ function findImages(html) {
 function toPayload(data) {
   return {
     widgetKey: 'peopleWall',
+    template: 'peopleWall',
     payload: data
   }
 }
