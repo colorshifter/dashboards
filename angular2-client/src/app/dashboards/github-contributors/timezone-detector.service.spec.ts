@@ -1,11 +1,13 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { TimezoneDetectorService } from './timezone-detector.service';
 
 describe('Service: TimezoneDetector', () => {
   beforeEach(() => {
-    addProviders([TimezoneDetectorService]);
+    TestBed.configureTestingModule({
+      providers: [TimezoneDetectorService]
+    });
   });
 
   it('creates an instance of TimezoneDetector',
