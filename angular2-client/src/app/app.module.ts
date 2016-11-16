@@ -1,4 +1,3 @@
-import { BiggestSlackerComponent } from "./dashboards/slack/biggest-slacker/biggest-slacker.component";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,17 +20,14 @@ import { ServerUrlService } from './server-url.service';
 import { TimezoneDetectorService } from './dashboards/github-contributors/timezone-detector.service';
 import { DashboardCarouselComponent } from './dashboard-carousel/dashboard-carousel.component';
 import { CarouselHeaderComponent } from './dashboard-carousel/carousel-header.component';
-import { SonarCoverageComponent } from './dashboards/sonar-coverage/sonar-coverage.component';
 import { SocketService } from './dashboard-carousel/socket.service';
 import { ExternalUrlComponent } from './dashboards/external-url/external-url.component';
 import { SafePipe } from './dashboards/external-url/safe.pipe';
-import { ReviewComponent } from './dashboards/review/review.component';
-import { StackOverflowComponent } from './dashboards/stackoverflow/stackoverflow.component';
 import { DynamicComponent } from './dashboard-carousel/dynamic.component';
 import { GalleryComponent } from './dashboards/slack/gallery/gallery.component'
-import { ThanksComponent } from './dashboards/slack/thanks/thanks.component'
-import { MostActiveChannelComponent } from './dashboards/slack/most-active-channel/most-active-channel.component';
 import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdown.component'
+import { ClassicComponent } from './dashboards/classic/classic.component'
+import { SlackMessageComponent } from './dashboards/slack/slack-message.component'
 
 @NgModule({
   imports: [
@@ -51,17 +47,13 @@ import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdo
     ProjectContributorComponent,
     DashboardCarouselComponent,
     CarouselHeaderComponent,
-    SonarCoverageComponent,
     ExternalUrlComponent,
     SafePipe,
-    ReviewComponent,
-    StackOverflowComponent,
     DynamicComponent,
-    BiggestSlackerComponent,
     GalleryComponent,
-    ThanksComponent,
-    MostActiveChannelComponent,
-    XmasCountdownComponent
+    XmasCountdownComponent,
+    ClassicComponent,
+    SlackMessageComponent
   ],
   providers: [
     SystemClock,

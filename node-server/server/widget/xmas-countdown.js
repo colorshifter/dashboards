@@ -10,6 +10,7 @@ XmasCountdown.prototype.rule = function() {
   const daysUntilChristmas = christmas.diff(now, 'days');
   return Promise.resolve({
     widgetKey: 'xmasCountdown',
+    template: 'christmas',
     payload: {
       daysUntilChristmas: daysUntilChristmas
     }

@@ -20,11 +20,14 @@ function createPayload(dataStore, messages) {
     if (biggestSlacker === undefined) {
     return {};
   }
+  var user = dataStore.getUserById(biggestSlacker.key);
   return {
     widgetKey: 'biggestSlacker',
+    template: 'message',
     payload: {
-      user: dataStore.getUserById(biggestSlacker.key),
-      message: biggestSlacker
+      username: user.name,
+      message: 'Is the biggest Slacker! 😎',
+      image: helper.highestResolutionForUser(user) 
     }
   };
 }

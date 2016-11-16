@@ -2,6 +2,8 @@ module.exports = {
   rule: thanks
 }
 
+var helper = require('./message-helper.js');
+
 function thanks(dataStore, messages) {
   var thankYouMessages = findThanksMessages(dataStore, messages);
   if (!thankYouMessages || thankYouMessages.length === 0) {
@@ -20,11 +22,14 @@ function findThanksMessages(dataStore, messages) {
 }
 
 function createPayload(dataStore, thankYou) {
+  var user = dataStore.getUserById(thankYou.user);
   return {
     widgetKey: 'thanks',
+    template: 'message',
     payload: {
-      user: dataStore.getUserById(thankYou.user),
-      thanks: thankYou
+      username: user.name,
+      message: thankYou.text,
+      image: helper.highestResolutionForUser(user)
     }
   };
 }

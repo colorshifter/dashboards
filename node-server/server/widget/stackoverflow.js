@@ -1,9 +1,16 @@
-const SO_URL = 'http://stackoverflow.com/search?q=novoda+hasaccepted%3Ano'
+const SO_URL = 'http://stackoverflow.com/search?q=novoda+hasaccepted%3Ano+closed%3Ano+duplicate%3Ano+created%3A3m...'
 const httpClient = require('request-promise-native');
+const BASE_URL = 'http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q=novoda&accepted=False&site=stackoverflow&closed=False&duplicate=False';
 const REQUEST = {
-  url: 'http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q=novoda&accepted=False&site=stackoverflow',
+  url: buildUrl(),
   gzip: true
 };
+
+function buildUrl() {
+  var date = new Date();
+  date.setMonth(date.getMonth() - 3);
+  return BASE_URL + `&min=${Math.floor(date.getTime() / 1000)}`;
+}
 
 function StackOverflow() {}
 
@@ -32,9 +39,15 @@ function parseResponse(body) {
 }
 
 function toRuleResult(data) {
+  var questions = data.questions;
+  var question = questions[Math.floor(Math.random() * questions.length)];
   return Promise.resolve({
     widgetKey: 'stackoverflow',
-    payload: data
+    template: 'classic',
+    payload: {
+      title: `&#128561;<br/>${questions.length} questions unanswered`,
+      text: `surl.novoda.com/stackoverflow<br/><br/>&quot;${question.title}&quot;`
+    }
   });
 }
 

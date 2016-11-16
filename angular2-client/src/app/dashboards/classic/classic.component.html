@@ -1,0 +1,10 @@
+<div class="content-container active-image" *ngIf="data != undefined">
+  <div class="active-container">
+    <div class="active-filler"></div>
+    <span class="active-channel-header" [innerHTML]="data.title"></span>
+    <br>
+    <div>
+      <span class="active-channel-copy" [innerHTML]="data.text"></span>
+    </div>
+  </div>
+</div>

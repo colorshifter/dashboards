@@ -1,8 +1,4 @@
-import { BiggestSlackerComponent } from "../dashboards/slack/biggest-slacker/biggest-slacker.component";
 import { ExternalUrlComponent } from '../dashboards/external-url/external-url.component';
-import { ReviewComponent } from '../dashboards/review';
-import { SonarCoverageComponent } from '../dashboards/sonar-coverage';
-import { StackOverflowComponent } from '../dashboards/stackoverflow/stackoverflow.component';
 import { WidgetEvent } from '../dashboards/WidgetEvent';
 import { DynamicComponent } from './dynamic.component';
 import { SocketService } from './socket.service';
@@ -10,36 +6,23 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ConnectableObservable, Subscription, Subscriber } from 'rxjs';
 import { ConfigService } from '../config.service';
 import { GalleryComponent } from '../dashboards/slack/gallery/gallery.component'
-import { ThanksComponent } from '../dashboards/slack/thanks/thanks.component'
-import { MostActiveChannelComponent } from '../dashboards/slack/most-active-channel/most-active-channel.component'
 import { XmasCountdownComponent } from '../dashboards/xmas-countdown/xmas-countdown.component'
+import { ClassicComponent } from '../dashboards/classic/classic.component'
+import { SlackMessageComponent } from '../dashboards/slack/slack-message.component'
 
 const COMPONENTS = {
-  coverage: SonarCoverageComponent,
-  ciWall: ExternalUrlComponent,
-  reviews: ReviewComponent,
-  stackoverflow: StackOverflowComponent,
-  biggestSlacker: BiggestSlackerComponent,
-  gallery: GalleryComponent,
-  thanks: ThanksComponent,
-  mostActiveChannel: MostActiveChannelComponent,
-  xmasCountdown: XmasCountdownComponent
+  externalUrl: ExternalUrlComponent,
+  image: GalleryComponent,
+  christmas: XmasCountdownComponent,
+  classic: ClassicComponent,
+  message: SlackMessageComponent
 };
-
-const distinct = (elem, index, arr) => arr.indexOf(elem) === index;
-
-function polyfillObject() {
-  if (!Object['values']) {
-    Object['values'] = (obj) => Object.keys(obj).map((key) => obj[key]);
-  }
-}
-polyfillObject();
 
 @Component({
   selector: 'app-dashboard-carousel',
   templateUrl: 'dashboard-carousel.component.html',
   styleUrls: ['dashboard-carousel.component.scss'],
-  entryComponents: Object['values'](COMPONENTS).filter(distinct)
+  entryComponents: require('object.values')(COMPONENTS)
 })
 export class DashboardCarouselComponent implements OnInit, OnDestroy {
 
@@ -69,17 +52,20 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
 
   private onWidgetEvent = (event: WidgetEvent) => {
     if (event.widgetKey === undefined) {
+      console.warn("This widget doesn't provide a 'widgetKey'");
       return;
     }
     if (event.widgetKey === 'refresh') {
       window.location.reload();
       return;
     }
-
-    const type = COMPONENTS[event.widgetKey];
+    const type = COMPONENTS[event.template];
     if (type != undefined) {
       this.type = type;
       this.event = event;
+    } else {
+      console.warn(`The widget ${event.widgetKey} doesn't provide a 'template'`); 
+      return;
     }
   };
 

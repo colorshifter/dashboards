@@ -20,11 +20,13 @@ function createPayload(dataStore, messages) {
   if (mostActiveChannel === undefined) {
     return {};
   }
+  var channelName = dataStore.getChannelById(mostActiveChannel.key).name;
   return {
     widgetKey: 'mostActiveChannel',
+    template: 'classic', 
     payload: {
-      channel: dataStore.getChannelById(mostActiveChannel.key),
-      message: mostActiveChannel
+      title: '&#128172;',
+      text: `<b>#${channelName}</b> is the most active channel!`
     }
   };
 }
