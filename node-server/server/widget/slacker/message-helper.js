@@ -41,10 +41,6 @@ function flattenMessages(messages, flattenKey) {
 
 function highestResolutionForUser(user) {
   var profile = user.profile;
-  var sizes = ['512', '192', '72', '48', '32', '24'];
-  var i = 0;
-  while (i < sizes.length && profile['image_' + sizes[i]] == null) {
-    i++;
-  }
-  return i >= sizes.length ? null : profile['image_' + sizes[i]];
+  var urls = ['512', '192', '72', '48', '32', '24'].map(size => profile['image_' + size]).filter(url => url);
+  return urls.length == 0 ? null : urls[0];
 }
