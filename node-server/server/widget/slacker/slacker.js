@@ -12,7 +12,6 @@ var rules = [
 
 var Slacker = function(config) {
   this.messages = [];
-  this.index = 0;
   this.ruleIndex = 0;
   this.rtm = new RtmClient(
     config.token,
@@ -28,12 +27,20 @@ function messageHandler(self, callback) {
       console.log('message ignored');
       return;
     }
-    if (self.index === 100) {
-      self.index = 0;
+    if (self.messages.length > 0 && !isSameDayFor(message, self.messages[0])) {
+      self.messages.length = 0;
     }
-    self.messages.splice(self.index, 0 , message);
-    self.index++;
+    self.messages.push(message);
   }
+}
+
+function isSameDayFor(message1, message2) {
+  return formatDateFor(message1) === formatDateFor(message2);
+}
+
+function formatDateFor(message) {
+  var date = new Date(Math.floor(message.ts)*1000);
+  return date.getDate()  + "-" + date.getMonth() + "-" + date.getFullYear();
 }
 
 function ignored(message) {
