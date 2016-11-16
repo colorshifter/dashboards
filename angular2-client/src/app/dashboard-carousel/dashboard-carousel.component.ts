@@ -22,7 +22,7 @@ const COMPONENTS = {
   selector: 'app-dashboard-carousel',
   templateUrl: 'dashboard-carousel.component.html',
   styleUrls: ['dashboard-carousel.component.scss'],
-  entryComponents: Object['values'](COMPONENTS)
+  entryComponents: require('object.values')(COMPONENTS)
 })
 export class DashboardCarouselComponent implements OnInit, OnDestroy {
 
