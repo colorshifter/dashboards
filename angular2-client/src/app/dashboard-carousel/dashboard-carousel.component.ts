@@ -52,7 +52,7 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
 
   private onWidgetEvent = (event: WidgetEvent) => {
     if (event.widgetKey === undefined) {
-      console.log("This widget doesn't provide a 'widgetKey'");
+      console.warn("This widget doesn't provide a 'widgetKey'");
       return;
     }
     if (event.widgetKey === 'refresh') {
@@ -64,7 +64,7 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
       this.type = type;
       this.event = event;
     } else {
-      console.log(`The widget ${event.widgetKey} doesn't provide a 'template'`); 
+      console.warn(`The widget ${event.widgetKey} doesn't provide a 'template'`); 
       return;
     }
   };
