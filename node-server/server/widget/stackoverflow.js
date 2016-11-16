@@ -9,7 +9,7 @@ const REQUEST = {
 function buildUrl() {
   var date = new Date();
   date.setMonth(date.getMonth() - 3);
-  return BASE_URL + `&min=${date.getTime() / 1000 | 0}`;
+  return BASE_URL + `&min=${Math.floor(date.getTime() / 1000)}`;
 }
 
 function StackOverflow() {}
