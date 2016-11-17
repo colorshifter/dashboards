@@ -15,6 +15,7 @@
     "express": "^4.14.0",
     "google-play-scraper": "^3.0.0",
     "moment": "^2.15.2",
+    "node-horseman": "^3.2.0",
     "request": "^2.74.0",
     "request-promise-native": "^1.0.3",
     "socket.io": "^1.4.8"

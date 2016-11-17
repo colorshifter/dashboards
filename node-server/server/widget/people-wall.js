@@ -1,35 +1,43 @@
-const http = require('request-promise-native');
-const cheerio = require('cheerio')
+const Horseman = require('node-horseman');
+const horseman = new Horseman();
+const cheerio = require('cheerio');
 
 function PeopleWall(config) {
-  this.cookie = config.cookie;
+  this.email = config.email;
+  this.password = config.password;
 }
 
 PeopleWall.prototype.rank = 1;
 
 PeopleWall.prototype.rule = function() {
-  return http(createRequest(this.cookie))
-    .then(findImages)
+  return findImages(this.email, this.password)
     .then(toPayload);
 }
 
-function createRequest(cookie) {
-  return {
-    url: 'https://www.pukkateam.com/home',
-    headers: {
-      'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.100 Safari/537.36',
-      'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-      'cookie': cookie
-    }
-  }
+function findImages(email, password) {
+  return new Promise(function(resolve, reject) {
+    horseman
+      .userAgent('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0')
+      .open('https://www.pukkateam.com/login')
+      .type('input[name="email"]', email)
+      .type('input[name="password"]', password)
+      .click('button[type="submit"]')
+      .wait(10000)
+      .html('#snapshots')
+      .close()
+      .then(findPeopleFrom)
+      .then(resolve)
+      .catch(reject);
+  });
 }
 
-function findImages(html) {
-  const $ = cheerio.load(html);
-  const images = $('.camera');
+function findPeopleFrom(snapshots) {
+  console.log(snapshots)
+  const $ = cheerio.load(snapshots);
+  const imageElements = $('.camera');
   const people = [];
-  for (var i in images) {
-    const each = images[i];
+  for (var i in imageElements) {
+    const each = imageElements[i];
     if (each.attribs) {
       if (each.attribs.src) {
         const person = {
