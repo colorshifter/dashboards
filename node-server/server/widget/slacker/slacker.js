@@ -39,7 +39,7 @@ function isSameDayFor(message1, message2) {
 }
 
 function formatDateFor(message) {
-  var date = new Date(Math.floor(message.ts)*1000);
+  var date = new Date(Math.floor(message.ts) * 1000);
   return date.getDate()  + "-" + date.getMonth() + "-" + date.getFullYear();
 }
 
