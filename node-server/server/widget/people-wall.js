@@ -25,14 +25,13 @@ function findImages(email, password) {
       .wait(10000)
       .html('#snapshots')
       .close()
-      .then(findPeopleFrom)
+      .then(findPeopleFromSnapshots)
       .then(resolve)
       .catch(reject);
   });
 }
 
-function findPeopleFrom(snapshots) {
-  console.log(snapshots)
+function findPeopleFromSnapshots(snapshots) {
   const $ = cheerio.load(snapshots);
   const imageElements = $('.camera');
   const people = [];
