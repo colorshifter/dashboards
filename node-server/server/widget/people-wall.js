@@ -12,11 +12,11 @@ function PeopleWall(config) {
 PeopleWall.prototype.rank = 1;
 
 PeopleWall.prototype.rule = function() {
-  return findImages(this.email, this.password)
+  return findPeople(this.email, this.password)
     .then(toPayload);
 }
 
-function findImages(email, password) {
+function findPeople(email, password) {
   return new Promise(function(resolve, reject) {
     horseman
       .userAgent('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0')
@@ -38,12 +38,12 @@ function findPeopleFromSnapshots(snapshots) {
   const imageElements = $('.camera');
   const people = [];
   for (var i in imageElements) {
-    const each = imageElements[i];
-    if (each.attribs) {
-      if (each.attribs.src) {
+    const image = imageElements[i];
+    if (image.attribs) {
+      if (image.attribs.src) {
         const person = {
-          image: each.attribs.src,
-          name: each.attribs.title
+          image: image.attribs.src,
+          name: image.attribs.title
         }
         people.push(person);
       }
