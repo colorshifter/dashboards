@@ -2,6 +2,8 @@ const Horseman = require('node-horseman');
 const horseman = new Horseman();
 const cheerio = require('cheerio');
 
+const WAIT_FOR_LOGIN_TIMEOUT_MS = 10 * 1000;
+
 function PeopleWall(config) {
   this.email = config.email;
   this.password = config.password;
@@ -22,7 +24,7 @@ function findImages(email, password) {
       .type('input[name="email"]', email)
       .type('input[name="password"]', password)
       .click('button[type="submit"]')
-      .wait(10000)
+      .wait(WAIT_FOR_LOGIN_TIMEOUT_MS)
       .html('#snapshots')
       .close()
       .then(findPeopleFromSnapshots)
