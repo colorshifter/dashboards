@@ -28,6 +28,7 @@ import { GalleryComponent } from './dashboards/slack/gallery/gallery.component'
 import { XmasCountdownComponent } from './dashboards/xmas-countdown/xmas-countdown.component'
 import { ClassicComponent } from './dashboards/classic/classic.component'
 import { SlackMessageComponent } from './dashboards/slack/slack-message.component'
+import { PeopleWallComponent } from './dashboards/people-wall/people-wall.component'
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { SlackMessageComponent } from './dashboards/slack/slack-message.componen
     GalleryComponent,
     XmasCountdownComponent,
     ClassicComponent,
-    SlackMessageComponent
+    SlackMessageComponent,
+    PeopleWallComponent
   ],
   providers: [
     SystemClock,

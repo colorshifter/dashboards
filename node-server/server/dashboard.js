@@ -3,6 +3,7 @@ const Coverage = require('./widget/coverage');
 const StackOverflow = require('./widget/stackoverflow');
 const Reviews = require('./widget/reviews');
 const XmasCountdown = require('./widget/xmas-countdown');
+const PeopleWall = require('./widget/people-wall')
 
 const DASHBOARD_INTERVAL = 1000 * 30;
 const DASHBOARD_ERROR_INTERVAL = 1000 * 1;
@@ -15,7 +16,8 @@ function Dashboard(config) {
     new Coverage(config.sonar),
     new StackOverflow(),
     new Reviews(),
-    new XmasCountdown()
+    new XmasCountdown(),
+    new PeopleWall(config.pukka)
   ].concat(this.slacker.getRules());
 }
 

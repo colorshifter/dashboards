@@ -11,11 +11,15 @@
   "license": "ISC",
   "dependencies": {
     "@slack/client": "^3.5.1",
+    "cheerio": "^0.22.0",
     "express": "^4.14.0",
     "google-play-scraper": "^3.0.0",
     "moment": "^2.15.2",
+    "node-horseman": "^3.2.0",
     "request": "^2.74.0",
     "request-promise-native": "^1.0.3",
-    "socket.io": "^1.4.8"
+    "socket.io": "^1.4.8",
+    "object.values": "^1.0.3",
+    "phantomjs": "2.1.7"
   }
 }

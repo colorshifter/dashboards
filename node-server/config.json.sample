@@ -8,6 +8,11 @@
     },
     "slack": {
       "token": ""
+    },
+    "pukka": {
+      "email": "",
+      "password": "",
+      "exclude": []
     }
   }
 }

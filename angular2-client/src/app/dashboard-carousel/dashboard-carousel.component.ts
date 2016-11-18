@@ -9,13 +9,15 @@ import { GalleryComponent } from '../dashboards/slack/gallery/gallery.component'
 import { XmasCountdownComponent } from '../dashboards/xmas-countdown/xmas-countdown.component'
 import { ClassicComponent } from '../dashboards/classic/classic.component'
 import { SlackMessageComponent } from '../dashboards/slack/slack-message.component'
+import { PeopleWallComponent } from '../dashboards/people-wall/people-wall.component'
 
 const COMPONENTS = {
   externalUrl: ExternalUrlComponent,
   image: GalleryComponent,
   christmas: XmasCountdownComponent,
   classic: ClassicComponent,
-  message: SlackMessageComponent
+  message: SlackMessageComponent,
+  peopleWall: PeopleWallComponent
 };
 
 @Component({
@@ -64,7 +66,7 @@ export class DashboardCarouselComponent implements OnInit, OnDestroy {
       this.type = type;
       this.event = event;
     } else {
-      console.warn(`The widget ${event.widgetKey} doesn't provide a 'template'`); 
+      console.warn(`The widget ${event.widgetKey} doesn't provide a 'template'`);
       return;
     }
   };
