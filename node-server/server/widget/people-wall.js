@@ -5,6 +5,10 @@ const valuesOf = require('object.values');
 
 const WAIT_FOR_LOGIN_TIMEOUT_MS = 10 * 1000;
 
+const OPT_OUT_NAMES = [
+  'Alex Styl'
+];
+
 function PeopleWall(config) {
   this.email = config.email;
   this.password = config.password;
@@ -44,8 +48,10 @@ function findPeopleFromSnapshots(snapshots) {
         image: image.attribs.src,
         name: image.attribs.title
       }
-    });
+    }).filter(filterOpttedOutPeople);
 }
+
+const filterOpttedOutPeople = (person) => !OPT_OUT_NAMES.includes(person.name);
 
 function toPayload(data) {
   return {
