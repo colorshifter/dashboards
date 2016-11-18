@@ -10,7 +10,8 @@
       "token": ""
     },
     "pukka": {
-      "cookie": ""
+      "email": "",
+      "password": ""
     }
   }
 }
