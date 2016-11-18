@@ -11,7 +11,8 @@
     },
     "pukka": {
       "email": "",
-      "password": ""
+      "password": "",
+      "exclude": []
     }
   }
 }
