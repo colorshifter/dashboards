@@ -1,6 +1,7 @@
 const Horseman = require('node-horseman');
 const horseman = new Horseman();
 const cheerio = require('cheerio');
+const valuesOf = require('object.values');
 
 const WAIT_FOR_LOGIN_TIMEOUT_MS = 10 * 1000;
 
@@ -11,13 +12,13 @@ function PeopleWall(config) {
 
 PeopleWall.prototype.rank = 1;
 
-PeopleWall.prototype.rule = function() {
+PeopleWall.prototype.rule = function () {
   return findPeople(this.email, this.password)
     .then(toPayload);
 }
 
 function findPeople(email, password) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     horseman
       .userAgent('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0')
       .open('https://www.pukkateam.com/login')
@@ -36,20 +37,14 @@ function findPeople(email, password) {
 function findPeopleFromSnapshots(snapshots) {
   const $ = cheerio.load(snapshots);
   const imageElements = $('.camera');
-  const people = [];
-  for (var i in imageElements) {
-    const image = imageElements[i];
-    if (image.attribs) {
-      if (image.attribs.src) {
-        const person = {
-          image: image.attribs.src,
-          name: image.attribs.title
-        };
-        people.push(person);
+  return valuesOf(imageElements)
+    .filter((image) => image.attribs && image.attribs.src)
+    .map((image) => {
+      return {
+        image: image.attribs.src,
+        name: image.attribs.title
       }
-    }
-  }
-  return people;
+    });
 }
 
 function toPayload(data) {
