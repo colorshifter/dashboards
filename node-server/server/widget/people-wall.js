@@ -44,7 +44,7 @@ function findPeopleFromSnapshots(snapshots) {
         const person = {
           image: image.attribs.src,
           name: image.attribs.title
-        }
+        };
         people.push(person);
       }
     }
@@ -57,7 +57,7 @@ function toPayload(data) {
     widgetKey: 'peopleWall',
     template: 'peopleWall',
     payload: data
-  }
+  };
 }
 
 module.exports = PeopleWall;
